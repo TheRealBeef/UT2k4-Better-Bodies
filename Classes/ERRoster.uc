@@ -1,3 +1,5 @@
+// Credit to GibbableCorpsesv5 by Aspide for figuring out these requirements
+
 class ERRoster extends xDMRoster
     hidecategories(Movement,Collision,Lighting,LightColor,Karma,Force);
 
