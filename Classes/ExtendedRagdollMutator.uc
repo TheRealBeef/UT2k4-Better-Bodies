@@ -88,8 +88,8 @@ defaultproperties
 {
     RagdollLifespanModded=300.0000000
     bAddToServerPackages=true
-	MaxRagdollsModded=48
-    FriendlyName="Extended Ragdoll Mutator"
+	MaxRagdollsModded=256
+    FriendlyName="Better Bodies"
     Description="Increases the time that ragdolls exist and prevents them from despawning."
     bAlwaysRelevant=true
     RemoteRole=2
