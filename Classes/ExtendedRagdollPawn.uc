@@ -29,14 +29,6 @@ function PlayDyingAnimation(class<DamageType> DamageType, vector HitLoc)
 		if( pc != None && pc.ViewTarget == self )
 			PlayersRagdoll = true;
 
-		// In low physics detail, if we were not just controlling this pawn,
-		// and it has not been rendered in 3 seconds, just destroy it.
-		if( (Level.PhysicsDetailLevel != PDL_High) && !PlayersRagdoll && (Level.TimeSeconds - LastRenderTime > 3) )
-		{
-			Destroy();
-			return;
-		}
-
 		// Try and obtain a rag-doll setup. Use optional 'override' one out of player record first, then use the species one.
 		if( RagdollOverride != "")
 			RagSkelName = RagdollOverride;
@@ -46,13 +38,13 @@ function PlayDyingAnimation(class<DamageType> DamageType, vector HitLoc)
 			Log("xPawn.PlayDying: No Species");
 
 		// If we managed to find a name, try and make a rag-doll slot availbale.
-//		if( RagSkelName != "" )
-//		{
-//			 KMakeRagdollAvailable();
-//		}
+		if( RagSkelName != "" )
+		{
+			 KMakeRagdollAvailable();
+		}
 
-//		if( KIsRagdollAvailable() && RagSkelName != "" )
-		if(RagSkelName != "" )
+		if( KIsRagdollAvailable() && RagSkelName != "" )
+//		if(RagSkelName != "" )
 		{
 			skelParams = KarmaParamsSkel(KParams);
 			skelParams.KSkeleton = RagSkelName;
@@ -143,7 +135,7 @@ function PlayDyingAnimation(class<DamageType> DamageType, vector HitLoc)
 			SetPhysics(PHYS_KarmaRagdoll);
 
 			// If viewing this ragdoll, set the flag to indicate that it is 'important'
-//			if( PlayersRagdoll )
+			if( PlayersRagdoll )
 				skelParams.bKImportantRagdoll = true;
 
 			skelParams.bRubbery = DamageType.Default.bRubbery;
@@ -357,8 +349,8 @@ state Dying
             }
             else
             {
-//                skelParams.bKImportantRagdoll = false;
-                  skelParams.bKImportantRagdoll = true;
+                skelParams.bKImportantRagdoll = false;
+//                  skelParams.bKImportantRagdoll = true;
             }
             StartDeRes();
         }
@@ -401,11 +393,11 @@ simulated function SpawnGiblet( class<Gib> GibClass, Vector Location, Rotator Ro
 
     Giblet.Velocity = Velocity + Normal(Direction) * (250 + 260 * FRand());
     //Giblet.LifeSpan = Giblet.LifeSpan + 2 * FRand() - 1;
-	Giblet.LifeSpan = RagdollLifeTime / 2.0;
+	Giblet.LifeSpan = RagdollLifeTime;
 }
 
 defaultproperties
 {
-    RagdollLifeTime=300.0
-    DeResTime=10.0
+    RagdollLifeTime=120.0
+    DeResTime=5.0
 }

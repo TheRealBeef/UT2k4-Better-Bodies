@@ -86,9 +86,9 @@ function ModifyPlayer(Pawn Other)
 
 defaultproperties
 {
-    RagdollLifespanModded=300.0000000
+    RagdollLifespanModded=120.0000000
     bAddToServerPackages=true
-	MaxRagdollsModded=256
+	MaxRagdollsModded=44
     FriendlyName="Better Bodies"
     Description="Increases the time that ragdolls exist and prevents them from despawning."
     bAlwaysRelevant=true
