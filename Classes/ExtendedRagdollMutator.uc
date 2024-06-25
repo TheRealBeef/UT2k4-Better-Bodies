@@ -8,15 +8,7 @@ var() config int MaxRagdollsModded;
 function PreBeginPlay()
 {
     super.PreBeginPlay();
-	
-    // Set the custom LevelInfo class
-    // Set the max number of ragdolls
-    if (Level != none)
-    {
-        Level.MaxRagdolls = MaxRagdollsModded;
-    }
-	
-	
+
     Level.Game.DefaultPlayerClassName = "BetterBodies.ExtendedRagdollPawn";
     // End:0x92
     if(TeamGame(Level.Game) != none)
@@ -32,6 +24,15 @@ function PreBeginPlay()
         }
     }
     //return;    
+}
+
+function PostBeginPlay()
+{
+    // Set the max number of ragdolls
+    if (Level != none)
+    {
+        Level.MaxRagdolls = MaxRagdollsModded;
+    }
 }
 
 function PlayerChangedClass(Controller C)
