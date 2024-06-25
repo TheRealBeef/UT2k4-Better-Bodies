@@ -20,10 +20,10 @@ There are three courses.
 5. 
 From `ExtendedRagdollPawn.uc` ~line 41
 ```
-		if( RagSkelName != "" )
-		{
-			 KMakeRagdollAvailable();
-		}
+if( RagSkelName != "" )
+{
+	KMakeRagdollAvailable();
+}
 ```
   
 ## Configuration .ini and values into configure mutator menu
