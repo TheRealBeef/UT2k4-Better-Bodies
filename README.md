@@ -22,7 +22,13 @@ From `ExtendedRagdollPawn.uc` ~line 41
 ```
 if( RagSkelName != "" )
 {
-	KMakeRagdollAvailable();
+    KMakeRagdollAvailable();
+}
+
+if( KIsRagdollAvailable() && RagSkelName != "" )
+// if(RagSkelName != "" )
+{
+   ... karma initialization stuff
 }
 ```
   
