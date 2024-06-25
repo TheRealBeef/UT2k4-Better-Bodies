@@ -1,14 +1,9 @@
 class ExtendedRagdollMutator extends Mutator
-	config(BetterBodies)
+	config(ExtRag)
 	hidecategories(Movement,Collision,Lighting,LightColor,Karma,Force);
 
 var() config float RagdollLifespanModded;	
 var() config int MaxRagdollsModded;
-var() config int CertainGibness;
-var() config float RagdollLifeTime;
-var() config int CorpseTotalGibDamage;
-var() config bool GibCorpseFallingDamage;
-var() config int GibCorpseFallingDamageSpeed;
 
 function PreBeginPlay()
 {
@@ -78,11 +73,6 @@ function ModifyPlayer(Pawn Other)
     if (Other != none && ExtendedRagdollPawn(Other) != none)
     {
         ExtendedRagdollPawn(Other).RagdollLifeTime = RagdollLifespanModded;
-        ExtendedRagdollPawn(Other).CertainGibness = CertainGibness;
-        ExtendedRagdollPawn(Other).RagdollLifeTime = RagdollLifeTime;
-        ExtendedRagdollPawn(Other).CorpseTotalGibDamage = CorpseTotalGibDamage;
-        ExtendedRagdollPawn(Other).GibCorpseFallingDamage = GibCorpseFallingDamage;
-        ExtendedRagdollPawn(Other).GibCorpseFallingDamageSpeed = GibCorpseFallingDamageSpeed;
     }
 
     // Call the next mutator's ModifyPlayer function if NextMutator is not None
@@ -96,15 +86,11 @@ function ModifyPlayer(Pawn Other)
 
 defaultproperties
 {
-    RagdollLifespanModded=300.0000000
+    RagdollLifespanModded=120.0000000
     bAddToServerPackages=true
-	MaxRagdollsModded=48
-    FriendlyName="Better Bodies Plus Gibbing"
-    Description="Ragdolls stay around longer and can be gibbed."
-    CertainGibness=-45
-    CorpseTotalGibDamage=40
-    GibCorpseFallingDamage=true
-    GibCorpseFallingDamageSpeed=1200
+	MaxRagdollsModded=44
+    FriendlyName="Better Bodies"
+    Description="Increases the time that ragdolls exist and prevents them from despawning."
     bAlwaysRelevant=true
     RemoteRole=2
 }
